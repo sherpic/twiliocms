@@ -1,0 +1,4 @@
+.idea/*
+node_modules/*
+public/app/vendor/bower_modules/*
+public/app/built/*
