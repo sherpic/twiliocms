@@ -8,6 +8,10 @@ Vue.component('response', {
         console.log('uuid', this.uuid);
         return {}
     },
+    ready   : function () {
+        // it works
+        console.log(this.uuid);
+    },
     methods : {
         addVerb: function () {
 
