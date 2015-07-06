@@ -7,6 +7,7 @@
     "vue": "~0.12.6",
     "jsPlumb": "~1.7.5",
     "bootstrap": "~3.3.5",
-    "bootstrap3-ie10-viewport-bug-workaround": "~1.0.0"
+    "bootstrap3-ie10-viewport-bug-workaround": "~1.0.0",
+    "simple-uuid": "~1.0.1"
   }
 }

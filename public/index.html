@@ -54,6 +54,19 @@
         <p class="lead">Start building your application</p>
 
         {{ salutation }}
+
+    </div>
+
+    <div class="builder">
+        <button type="button"
+                class="btn btn-default btn-lg btn-success"
+                style="margin: 10px;"
+                v-class="disabled: isMaxResponses"
+                v-on="click: addResponse">
+            <span class="glyphicon glyphicon-plus"></span> Add Response
+        </button>
+
+        <response v-repeat="responses"></response>
     </div>
 
 </div><!-- /.container -->
@@ -62,15 +75,28 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<!--<script src="/app/vendor/bower_modules/jquery/dist/jquery.js"></script>-->
-<!--<script src="/app/vendor/bower_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
-<!--<script src="/app/vendor/bower_modules/vue/dist/vue.min.js"></script>-->
-<!--<script src="/app/vendor/bower_modules/jsPlumb/dist/js/jquery.jsPlumb-1.7.5-min.js"></script>-->
+<script src="/app/vendor/bower_modules/jquery/dist/jquery.js"></script>
+<script src="/app/vendor/bower_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/app/vendor/bower_modules/vue/dist/vue.min.js"></script>
+<script src="/app/vendor/bower_modules/jsPlumb/dist/js/jquery.jsPlumb-1.7.5-min.js"></script>
+<script src="/app/vendor/bower_modules/simple-uuid/uuid.js"></script>
 
-<!--&lt;!&ndash; IE10 viewport hack for Surface/desktop Windows 8 bug &ndash;&gt;-->
-<!--<script src="/app/vendor/bower_modules/bootstrap3-ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js"></script>-->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="/app/vendor/bower_modules/bootstrap3-ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js"></script>
 
-<script src="/app/built/bower-components.js"></script>
+
+
+<script type="x-template" id="response-template">
+    <div class="panel panel-default" style="width: 250px;">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{title}}</h3>
+        </div>
+        <div class="panel-body">
+            <button>Add verb</button>
+        </div>
+    </div>
+</script>
+
 
 <script src="/app/app.js"></script>
 
