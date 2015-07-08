@@ -8,6 +8,7 @@
     "jsPlumb": "~1.7.5",
     "bootstrap": "~3.3.5",
     "bootstrap3-ie10-viewport-bug-workaround": "~1.0.0",
-    "simple-uuid": "~1.0.1"
+    "simple-uuid": "~1.0.1",
+    "lodash": "~3.10.0"
   }
 }
