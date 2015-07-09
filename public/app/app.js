@@ -1,3 +1,7 @@
+Vue.component('foobar', {
+   template: '<h1>FOOBAR</h1>'
+});
+
 // response component, draws the
 Vue.component('response', {
     template: '#response-template',
@@ -24,6 +28,12 @@ Vue.component('response', {
     methods : {
         addVerb: function () {
             console.log('We are going to add the verb, beware!');
+            $('#addVerb').modal({show:true});
+            this.$appendTo('<foobar></foobar>');
+            console.log(this.$el);
+        },
+        addVerbSave: function() {
+          console.log('save');
         },
         remove: function(response) {
             // triggering the parent method
@@ -33,7 +43,7 @@ Vue.component('response', {
     components: {
         'title': {
             props: ['title'],
-            template: '<div v-if="!editMode">\n<span class="panel-title">{{title}}</span>\n    <a v-on="click: edit" style="cursor: pointer;">[e]</a>\n</div>\n<div v-if="editMode">\n    <input v-model="tmpTitle">\n    <a v-on="click: save">[s]</a>\n</div>\n',
+            template: '<div v-if="!editMode">\n<span class="panel-title">{{title}}</span>\n    <a v-on="click: edit" style="cursor: pointer;">[e]</a>\n</div>\n<div v-if="editMode">\n    <input v-model="tmpTitle">\n    <a v-on="click: save">[s]</a>\n    <a v-on="click: cancel" style="cursor: pointer;">[c]</a>\n</div>\n',
             data  : function() {
                 return {
                     editMode: false,
@@ -41,11 +51,12 @@ Vue.component('response', {
                 };
             },
             ready: function() {
-                this.tmpTitle=this.title;
+
             },
             methods: {
                 edit: function() {
                     console.log('edit');
+                    this.tmpTitle = this.title;
                     this.editMode = true;
                 },
                 save: function() {
@@ -53,6 +64,9 @@ Vue.component('response', {
                     if(!_.isEmpty(this.tmpTitle)) {
                         this.title = this.tmpTitle;
                     }
+                    this.editMode = false;
+                },
+                cancel: function() {
                     this.editMode = false;
                 }
             }
@@ -64,7 +78,12 @@ Vue.component('response', {
 var builder = new Vue({
     el      : '.builder',
     data    : {
-        responses: []
+        responses: [
+            {
+                'uuid': UUID.generate(),
+                'title' : 'response #1'
+            }
+        ]
     },
     methods : {
         addResponse: function () {
@@ -93,6 +112,11 @@ new Vue({
     data    : {
         salutation: ', hurray!'
     },
-    children: [builder]
+    children: [builder],
+    methods: {
+        lll: function() {
+            console.log('lll');
+        }
+    }
 });
 
