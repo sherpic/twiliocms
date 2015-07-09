@@ -29,7 +29,7 @@ Vue.component('response', {
         addVerb: function () {
             console.log('We are going to add the verb, beware!');
             $('#addVerb').modal({show:true});
-            this.$appendTo('<foobar></foobar>');
+            $(this.$el).append('<foobar></foobar>');
             console.log(this.$el);
         },
         addVerbSave: function() {
