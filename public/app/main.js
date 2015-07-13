@@ -10,6 +10,9 @@ var app = new Vue({
         salutation: ', hurray!'
     },
     children: [builder],
+    components: {
+        builder: builder
+    },
     methods : {
         lll: function () {
             console.log('lll');

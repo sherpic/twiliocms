@@ -13,14 +13,16 @@
 <script>
     // application builder, one per application
     module.exports = {
-        el      : '.builder',
-        data    : {
-            responses: [
-                {
-                    'uuid' : UUID.generate(),
-                    'title': 'response #1'
-                }
-            ]
+        el      : function() {return '.builder'},
+        data    : function() {
+            return {
+                responses: [
+                    {
+                        'uuid' : UUID.generate(),
+                        'title': 'response #1'
+                    }
+                ]
+            }
         }
         ,
         methods : {
