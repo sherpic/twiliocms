@@ -1,8 +1,6 @@
 var Vue = require('vue');
 
-var builder = require('./components/builder.vue');
-var response = require('./components/response.vue');
-var addVerbModal = require('./components/add-verb-modal.vue');
+var builder = new Vue(require('./components/builder.vue'));
 
 var app = new Vue({
     el      : 'body',
@@ -10,9 +8,6 @@ var app = new Vue({
         salutation: ', hurray!'
     },
     children: [builder],
-    components: {
-        builder: builder
-    },
     methods : {
         lll: function () {
             console.log('lll');

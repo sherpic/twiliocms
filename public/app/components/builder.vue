@@ -11,21 +11,21 @@
 </template>
 
 <script>
+    var response = require('./response.vue');
+    var addVerbModal = require('./add-verb-modal.vue');
+
     // application builder, one per application
     module.exports = {
-        el      : function() {return '.builder'},
-        data    : function() {
-            return {
-                responses: [
-                    {
-                        'uuid' : UUID.generate(),
-                        'title': 'response #1'
-                    }
-                ]
-            }
-        }
-        ,
-        methods : {
+        el        : '.builder',
+        data      : {
+            responses: [
+                {
+                    'uuid' : UUID.generate(),
+                    'title': 'response #1'
+                }
+            ]
+        },
+        methods   : {
             addResponse   : function () {
                 if (this.isMaxResponses) {
                     return false;
@@ -40,10 +40,13 @@
                 this.responses.$remove(response);
             }
         },
-        computed: {
+        computed  : {
             isMaxResponses: function () {
                 return this.responses.length === 5;
             }
+        },
+        components: {
+            response    : response
         }
     };
 </script>

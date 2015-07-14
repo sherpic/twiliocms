@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify -t vueify -e ./public/app/main.js -o ./public/app/built/app.js"
+    "build": "browserify -t vueify -e ./public/app/main.js -o ./public/app/built/app.js",
+    "dev": "watchify -v -t vueify -e ./public/app/main.js -o ./public/app/built/app.js"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,8 @@
     "insert-css": "^0.2.0",
     "main-bower-files": "^2.8.2",
     "vueify": "^1.1.5"
+  },
+  "dependencies": {
+    "vue": "^0.12.7"
   }
 }
