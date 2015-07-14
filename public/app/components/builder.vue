@@ -12,7 +12,6 @@
 
 <script>
     var response = require('./response.vue');
-    var addVerbModal = require('./add-verb-modal.vue');
 
     // application builder, one per application
     module.exports = {
