@@ -13,6 +13,7 @@
                     </button>
                 </div>
             </div>
+            {{ verbs.length }}
             <div class="row" v-if="verbs.length">
                 <div class="col-md-12">
                     <h4>Verbs</h4>
@@ -60,7 +61,11 @@
                 var self = this;
 
                 this.addVerbModalInstance = this.$addChild({
-
+                    data: {
+                        addVerb: this.addVerb,
+                        hideAddVerbModal: this.hideAddVerbModal,
+                        verbs: this.verbs
+                    }
                 }, addVerbModal);
 
                 $(this.$el).append('<div class="modalContainer"></div>');
@@ -78,6 +83,7 @@
             },
             addVerb         : function (verbType) {
                 this.verbs.push({type: verbType, id: (this.verbs.length + 1)});
+                console.log('verbs', this.verbs);
             },
             remove          : function () {
                 // triggering the parent method

@@ -24,26 +24,24 @@
 
 <script>
     module.exports = {
-        props: ['hideAddVerbModal', 'addVerb'],
-        data   : function () {
-            return {
-                verbTypes       : [
-                    {text: 'Say', value: 'SAY'},
-                    {text: 'Dial', value: 'DIAL'},
-                    {text: 'Redirect', value: 'REDIRECT'}
-                ],
-                selectedVerbType: undefined
-            }
+        data   : {
+            verbTypes       : [
+                {text: 'Say', value: 'SAY'},
+                {text: 'Dial', value: 'DIAL'},
+                {text: 'Redirect', value: 'REDIRECT'}
+            ],
+            selectedVerbType: undefined
         },
         methods: {
             add  : function () {
                 console.log(this.selectedVerbType);
-                this.$parent.addVerb(this.selectedVerbType);
-                console.log('p 2', this.$parent.verbs.length);
+                this.addVerb(this.selectedVerbType);
+                //this.$add('verbs',{type: this.selectedVerbType, id: (this.verbs.length + 1)});
+                console.log('p 2', this.verbs);
                 console.log('add');
             },
             close: function () {
-                this.$parent.hideAddVerbModal();
+                this.hideAddVerbModal();
                 console.log('close');
             }
         },
