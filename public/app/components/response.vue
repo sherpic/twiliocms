@@ -26,6 +26,7 @@
             </div>
         </div>
         <div class="panel-body">
+            <button type="button" class="btn btn-primary pull-right" v-on="click: addVerb('ttt')">Add verb 1</button>
             <button type="button" class="btn btn-primary pull-right" v-on="click: showAddVerbModal">Add verb</button>
         </div>
     </div>
@@ -51,9 +52,16 @@
             return {
                 addVerbModalInstance: undefined,
                 verbs               : []
-            }
-        },
+            };
+        }
+        ,
         ready     : function () {
+            console.log('verbs howhow');
+            console.log('v', this.verbs);
+            console.log('1', this.addVerb);
+            //this.verbs = [];
+
+            //this.addVerb('hello');
 
         },
         methods   : {
@@ -62,9 +70,9 @@
 
                 this.addVerbModalInstance = this.$addChild({
                     data: {
-                        addVerb: this.addVerb,
+                        addVerb         : this.addVerb,
                         hideAddVerbModal: this.hideAddVerbModal,
-                        verbs: this.verbs
+                        verbs           : this.verbs
                     }
                 }, addVerbModal);
 

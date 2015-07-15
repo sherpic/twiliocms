@@ -9,6 +9,17 @@
                 </div>
                 <div class="modal-body">
                     <select v-model="selectedVerbType" options="verbTypes"></select>
+
+                    <div class="row" v-if="verbs.length">
+                        <div class="col-md-12">
+                            <h4>Verbs</h4>
+                            <ul>
+                                <li v-repeat="verb: verbs">
+                                    {{verb.type}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" v-on="click: close">Close</button>
@@ -35,6 +46,7 @@
         methods: {
             add  : function () {
                 console.log(this.selectedVerbType);
+                console.log('2',this.addVerb);
                 this.addVerb(this.selectedVerbType);
                 //this.$add('verbs',{type: this.selectedVerbType, id: (this.verbs.length + 1)});
                 console.log('p 2', this.verbs);
