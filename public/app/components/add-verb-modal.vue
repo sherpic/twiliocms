@@ -35,18 +35,20 @@
 
 <script>
     module.exports = {
-        data   : {
-            verbTypes       : [
-                {text: 'Say', value: 'SAY'},
-                {text: 'Dial', value: 'DIAL'},
-                {text: 'Redirect', value: 'REDIRECT'}
-            ],
-            selectedVerbType: undefined
+        data   : function () {
+            return {
+                verbTypes       : [
+                    {text: 'Say', value: 'SAY'},
+                    {text: 'Dial', value: 'DIAL'},
+                    {text: 'Redirect', value: 'REDIRECT'}
+                ],
+                selectedVerbType: undefined
+            };
         },
         methods: {
             add  : function () {
                 console.log(this.selectedVerbType);
-                console.log('2',this.addVerb);
+                console.log('2', this.addVerb);
                 this.addVerb(this.selectedVerbType);
                 //this.$add('verbs',{type: this.selectedVerbType, id: (this.verbs.length + 1)});
                 console.log('p 2', this.verbs);
