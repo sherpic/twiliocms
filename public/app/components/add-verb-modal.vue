@@ -75,7 +75,8 @@
 
             // remove the instance, after it would be hidden
             $('#addVerbModal').on('hidden.bs.modal', function (e) {
-                self.$destroy(true);
+                self.showModal = false;
+//                self.$destroy(true);
             });
 
             $('#addVerbModal').modal('show');

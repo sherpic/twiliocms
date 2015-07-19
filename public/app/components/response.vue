@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-primary pull-right" v-on="click: showAddVerbModal">Add verb</button>
         </div>
 
-        <component is="addVerbModal" verbs="{{verbs}}" v-if="showModal"></component>
+        <component is="addVerbModal" verbs="{{verbs}}" show-modal="{{ @ showModal }}" v-if="showModal"></component>
     </div>
 </template>
 <script>
