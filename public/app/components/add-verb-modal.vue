@@ -10,6 +10,7 @@
                 <div class="modal-body">
                     <select v-model="selectedVerbType" options="verbTypes"></select>
 
+                    verbs: {{ verbs | json }}
                     <div class="row" v-if="verbs.length">
                         <div class="col-md-12">
                             <h4>Verbs</h4>
@@ -65,9 +66,9 @@
 
             var self = this;
 
-            console.log(this);
+            console.log('this', this);
 
-            console.log('verbs', this.verbs);
+            console.log('verbs 2', this.verbs);
 
             // remove the instance, after it would be hidden
             $('#addVerbModal').on('hidden.bs.modal', function (e) {

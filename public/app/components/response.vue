@@ -29,6 +29,8 @@
             <button type="button" class="btn btn-primary pull-right" v-on="click: addVerb('ttt')">Add verb 1</button>
             <button type="button" class="btn btn-primary pull-right" v-on="click: showAddVerbModal">Add verb</button>
         </div>
+
+        <div class="modalContainer" verbs="{{@ verbs}}"></div>
     </div>
 </template>
 <script>
@@ -61,18 +63,24 @@
             console.log('1', this.addVerb);
             //this.verbs = [];
 
-            //this.addVerb('hello');
+            console.log('verbs 1',this.verbs);
 
         },
         methods   : {
             showAddVerbModal: function () {
                 var self = this;
 
-                $(this.$el).append('<div class="modalContainer" verbs="{{ verbs }}" add-verb="{{ addVerb  }}" hide-add-verb-modal="{{ hideAddVerbModal }}"></div>');
-                this.$compile(this.$el);
+//                $(this.$el).append('<div class="modalContainer"></div>');
+//                this.$compile(this.$el);
+
+                console.log(this.verbs);
 
                 this.$addChild({
-                    props: ['verbs', 'addVerb', 'hideAddVerbModal'],
+                    props: {
+                        verbs:{
+                            type: Array
+                        }
+                    },
                     el: '.modalContainer'
                 }, addVerbModal);
 
