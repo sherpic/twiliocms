@@ -35,6 +35,7 @@
 
 <script>
     module.exports = {
+        props: ['verbs', 'addVerb', 'hideAddVerbModal'],
         data   : function () {
             return {
                 verbTypes       : [
@@ -50,17 +51,29 @@
                 console.log(this.selectedVerbType);
                 console.log('2', this.addVerb);
                 this.addVerb(this.selectedVerbType);
+                this.verbs.push({type: this.selectedVerbType, id: (this.verbs.length + 1)});
+
                 //this.$add('verbs',{type: this.selectedVerbType, id: (this.verbs.length + 1)});
                 console.log('p 2', this.verbs);
                 console.log('add');
             },
             close: function () {
-                this.hideAddVerbModal();
+                $('#addVerbModal').modal('hide');
                 console.log('close');
             }
         },
         ready  : function () {
-            console.log(this);
+
+            var self = this;
+
+            console.log('verbs', this.verbs);
+
+            // remove the instance, after it would be hidden
+            $('#addVerbModal').on('hidden.bs.modal', function (e) {
+                self.$destroy(true);
+            });
+
+            $('#addVerbModal').modal('show');
         }
     }
 </script>

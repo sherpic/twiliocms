@@ -68,23 +68,13 @@
             showAddVerbModal: function () {
                 var self = this;
 
-                this.addVerbModalInstance = this.$addChild({
-                    data: {
-                        addVerb         : this.addVerb,
-                        hideAddVerbModal: this.hideAddVerbModal,
-                        verbs           : this.verbs
-                    }
+                this.$addChild({
+                    el: '.modalContainer'
                 }, addVerbModal);
 
-                $(this.$el).append('<div class="modalContainer"></div>');
-                this.addVerbModalInstance.$mount(this.$el.querySelector('.modalContainer'));
+                $(this.$el).append('<div class="modalContainer" verbs="{{ verbs }}" add-verb="{{ addVerb  }}" hide-add-verb-modal="{{ hideAddVerbModal }}"></div>');
+                this.$compile(this.$el);
 
-                // remove the instance, after it would be hidden
-                $('#addVerbModal').on('hidden.bs.modal', function (e) {
-                    self.addVerbModalInstance.$destroy(true);
-                });
-
-                $('#addVerbModal').modal('show');
             },
             hideAddVerbModal: function () {
                 $('#addVerbModal').modal('hide');
