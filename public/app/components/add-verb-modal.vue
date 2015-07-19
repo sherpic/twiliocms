@@ -36,6 +36,7 @@
 
 <script>
     module.exports = {
+        props: ['verbs'],
         data   : function () {
             return {
                 verbTypes       : [

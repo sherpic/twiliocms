@@ -30,11 +30,11 @@
             <button type="button" class="btn btn-primary pull-right" v-on="click: showAddVerbModal">Add verb</button>
         </div>
 
-        <div class="modalContainer" verbs="{{verbs}}" v-if="showModal"></div>
+        <component is="addVerbModal" verbs="{{verbs}}" v-if="showModal"></component>
     </div>
 </template>
 <script>
-    var addVerbModal = Vue.extend(require('./add-verb-modal.vue'));
+    //var addVerbModal = Vue.extend(require('./add-verb-modal.vue'));
 
     // response component, draws the
     module.exports = {
@@ -69,35 +69,9 @@
         },
         methods   : {
             showAddVerbModal: function () {
+                console.log(this.showModal);
                 this.showModal = true;
-
-//                var self = this;
-//
-////                $(this.$el).append('<div class="modalContainer"></div>');
-////                this.$compile(this.$el);
-//
-//                console.log(this.verbs);
-//
-//                var modal = new addVerbModal({
-//                    props: {
-//                        verbs:{
-//                            type: Array
-//                        }
-//                    },
-//                    el: '.modalContainer'
-//                });
-
-                //modal.$mount(this.$el.querySelector('.modalContainer'));
-
-//                this.$addChild({
-//                    props: {
-//                        verbs:{
-//                            type: Array
-//                        }
-//                    },
-//                    el: '.modalContainer'
-//                }, addVerbModal);
-
+                console.log(this.showModal);
             },
             hideAddVerbModal: function () {
                 $('#addVerbModal').modal('hide');
@@ -142,24 +116,7 @@
                     }
                 }
             },
-            modal : new addVerbModal({
-                props: {
-                    verbs:{
-                        type: Array
-                    }
-                },
-                el: '.modalContainer'
-            })
-        },
-        ready: function() {
-//            var modal = new addVerbModal({
-//                props: {
-//                    verbs:{
-//                        type: Array
-//                    }
-//                },
-//                el: '.modalContainer'
-//            });
+            addVerbModal : require('./add-verb-modal.vue')
         }
     };
 </script>
