@@ -68,12 +68,13 @@
             showAddVerbModal: function () {
                 var self = this;
 
-                this.$addChild({
-                    el: '.modalContainer'
-                }, addVerbModal);
-
                 $(this.$el).append('<div class="modalContainer" verbs="{{ verbs }}" add-verb="{{ addVerb  }}" hide-add-verb-modal="{{ hideAddVerbModal }}"></div>');
                 this.$compile(this.$el);
+
+                this.$addChild({
+                    props: ['verbs', 'addVerb', 'hideAddVerbModal'],
+                    el: '.modalContainer'
+                }, addVerbModal);
 
             },
             hideAddVerbModal: function () {

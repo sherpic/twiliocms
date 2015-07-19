@@ -35,7 +35,6 @@
 
 <script>
     module.exports = {
-        props: ['verbs', 'addVerb', 'hideAddVerbModal'],
         data   : function () {
             return {
                 verbTypes       : [
@@ -50,7 +49,7 @@
             add  : function () {
                 console.log(this.selectedVerbType);
                 console.log('2', this.addVerb);
-                this.addVerb(this.selectedVerbType);
+                //this.addVerb(this.selectedVerbType);
                 this.verbs.push({type: this.selectedVerbType, id: (this.verbs.length + 1)});
 
                 //this.$add('verbs',{type: this.selectedVerbType, id: (this.verbs.length + 1)});
@@ -65,6 +64,8 @@
         ready  : function () {
 
             var self = this;
+
+            console.log(this);
 
             console.log('verbs', this.verbs);
 
