@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-primary pull-right" v-on="click: showAddVerbModal">Add verb</button>
         </div>
 
-        <div class="modalContainer" verbs="{{@ verbs}}"></div>
+        <div class="modalContainer" verbs="{{verbs}}"></div>
     </div>
 </template>
 <script>
@@ -80,10 +80,11 @@
                         verbs:{
                             type: Array
                         }
-                    }
+                    },
+                    el: '.modalContainer'
                 });
 
-                modal.$mount(this.$el.querySelector('.modalContainer'));
+                //modal.$mount(this.$el.querySelector('.modalContainer'));
 
 //                this.$addChild({
 //                    props: {
