@@ -55,6 +55,7 @@
 
                 //this.$add('verbs',{type: this.selectedVerbType, id: (this.verbs.length + 1)});
                 console.log('p 2', this.verbs);
+
                 console.log('add');
             },
             close: function () {
@@ -69,6 +70,7 @@
             console.log('this', this);
 
             console.log('verbs 2', this.verbs);
+            console.log('par 2', this.$parent.verbs);
 
             // remove the instance, after it would be hidden
             $('#addVerbModal').on('hidden.bs.modal', function (e) {

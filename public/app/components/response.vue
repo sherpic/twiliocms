@@ -13,7 +13,7 @@
                     </button>
                 </div>
             </div>
-            {{ verbs.length }}
+            {{ verbs.length }} {{ verbs | json }}
             <div class="row" v-if="verbs.length">
                 <div class="col-md-12">
                     <h4>Verbs</h4>
@@ -75,14 +75,24 @@
 
                 console.log(this.verbs);
 
-                this.$addChild({
+                var modal = new addVerbModal({
                     props: {
                         verbs:{
                             type: Array
                         }
-                    },
-                    el: '.modalContainer'
-                }, addVerbModal);
+                    }
+                });
+
+                modal.$mount(this.$el.querySelector('.modalContainer'));
+
+//                this.$addChild({
+//                    props: {
+//                        verbs:{
+//                            type: Array
+//                        }
+//                    },
+//                    el: '.modalContainer'
+//                }, addVerbModal);
 
             },
             hideAddVerbModal: function () {
