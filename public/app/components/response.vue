@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-primary pull-right" v-on="click: showAddVerbModal">Add verb</button>
         </div>
 
-        <div class="modalContainer" verbs="{{verbs}}"></div>
+        <div class="modalContainer" verbs="{{verbs}}" v-if="showModal"></div>
     </div>
 </template>
 <script>
@@ -53,7 +53,8 @@
         data      : function () {
             return {
                 addVerbModalInstance: undefined,
-                verbs               : []
+                verbs               : [],
+                showModal: false
             };
         }
         ,
@@ -68,21 +69,23 @@
         },
         methods   : {
             showAddVerbModal: function () {
-                var self = this;
+                this.showModal = true;
 
-//                $(this.$el).append('<div class="modalContainer"></div>');
-//                this.$compile(this.$el);
-
-                console.log(this.verbs);
-
-                var modal = new addVerbModal({
-                    props: {
-                        verbs:{
-                            type: Array
-                        }
-                    },
-                    el: '.modalContainer'
-                });
+//                var self = this;
+//
+////                $(this.$el).append('<div class="modalContainer"></div>');
+////                this.$compile(this.$el);
+//
+//                console.log(this.verbs);
+//
+//                var modal = new addVerbModal({
+//                    props: {
+//                        verbs:{
+//                            type: Array
+//                        }
+//                    },
+//                    el: '.modalContainer'
+//                });
 
                 //modal.$mount(this.$el.querySelector('.modalContainer'));
 
@@ -138,7 +141,25 @@
                         this.editMode = false;
                     }
                 }
-            }
+            },
+            modal : new addVerbModal({
+                props: {
+                    verbs:{
+                        type: Array
+                    }
+                },
+                el: '.modalContainer'
+            })
+        },
+        ready: function() {
+//            var modal = new addVerbModal({
+//                props: {
+//                    verbs:{
+//                        type: Array
+//                    }
+//                },
+//                el: '.modalContainer'
+//            });
         }
     };
 </script>
