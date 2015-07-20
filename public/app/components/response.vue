@@ -26,11 +26,10 @@
             </div>
         </div>
         <div class="panel-body">
-            <button type="button" class="btn btn-primary pull-right" v-on="click: addVerb('ttt')">Add verb 1</button>
             <button type="button" class="btn btn-primary pull-right" v-on="click: showAddVerbModal">Add verb</button>
         </div>
 
-        <component is="addVerbModal" verbs="{{verbs}}" show-modal="{{ @ showModal }}" v-if="showModal"></component>
+        <component is="addVerbModal" verbs="{{verbs}}" show-modal="{{@showModal}}" v-if="showModal"></component>
     </div>
 </template>
 <script>
@@ -72,17 +71,6 @@
                 console.log(this.showModal);
                 this.showModal = true;
                 console.log(this.showModal);
-            },
-            hideAddVerbModal: function () {
-                $('#addVerbModal').modal('hide');
-            },
-            addVerb         : function (verbType) {
-                this.verbs.push({type: verbType, id: (this.verbs.length + 1)});
-                console.log('verbs', this.verbs);
-            },
-            remove          : function () {
-                // triggering the parent method
-                this.removeResponse(this.$data);
             }
         },
         components: {
