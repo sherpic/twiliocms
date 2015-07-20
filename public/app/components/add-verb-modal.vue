@@ -9,7 +9,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-warning alert-dismissible" role="alert" v-if="warningMessage">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" v-on="click: warningMessage=undefined"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                v-on="click: warningMessage=undefined"><span aria-hidden="true">&times;</span></button>
                         <strong>Warning!</strong> {{warningMessage}}
                     </div>
 
@@ -28,7 +29,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" v-on="click: close">Close</button>
-                    <button type="button" class="btn btn-primary" v-class="disabled: isMaxVerbs" v-on="click: add">Insert</button>
+                    <button type="button" class="btn btn-primary" v-class="disabled: isMaxVerbs" v-on="click: add">
+                        Insert
+                    </button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -40,8 +43,8 @@
 
 <script>
     module.exports = {
-        props: ['verbs','showModal'],
-        data   : function () {
+        props   : ['verbs', 'showModal'],
+        data    : function () {
             return {
                 verbTypes       : [
                     {text: 'Say', value: 'SAY'},
@@ -49,22 +52,26 @@
                     {text: 'Redirect', value: 'REDIRECT'}
                 ],
                 selectedVerbType: undefined,
-                warningMessage: undefined
+                warningMessage  : undefined
             };
         },
-        watch: {
-            isMaxVerbs: function(newValue, oldValue) {
-                console.log(newValue, oldValue);
-                this.warningMessage = 'It\'s only possible to add 5 verbs for now';
+        watch   : {
+            isMaxVerbs: {
+                handler  : function (newValue, oldValue) {
+                    if(newValue) {
+                        this.warningMessage = 'It\'s only possible to add 5 verbs for now';
+                    }
+                },
+                immediate: true
             }
         },
-        methods: {
+        methods : {
             add  : function () {
-                if(this.isMaxVerbs) {
+                if (this.isMaxVerbs) {
                     return;
                 }
 
-                if(!this.selectedVerbType) {
+                if (!this.selectedVerbType) {
                     this.warningMessage = 'You should select the verb type';
                     return;
                 }
@@ -78,15 +85,15 @@
             }
         },
         computed: {
-            isMaxVerbs: function() {
+            isMaxVerbs: function () {
                 return this.verbs.length >= 2;
             }
         },
-        ready  : function () {
+        ready   : function () {
             var self = this;
 
-            this.$watch('isMaxVerbs',function(newValue, oldValue){
-               console.log(newValue, oldValue);
+            this.$watch('isMaxVerbs', function (newValue, oldValue) {
+                console.log(newValue, oldValue);
             });
             console.log(this, this.isMaxVerbs);
 
