@@ -49,7 +49,8 @@
                 verbTypes       : [
                     {text: 'Say', value: 'SAY'},
                     {text: 'Dial', value: 'DIAL'},
-                    {text: 'Redirect', value: 'REDIRECT'}
+                    {text: 'Redirect', value: 'REDIRECT'},
+                    {text: 'Play', value: 'PLAY'}
                 ],
                 selectedVerbType: undefined,
                 warningMessage  : undefined

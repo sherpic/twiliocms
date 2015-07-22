@@ -17,11 +17,8 @@
             <div class="row" v-if="verbs.length">
                 <div class="col-md-12">
                     <h4>Verbs</h4>
-                    <ul>
-                        <li v-repeat="verb: verbs">
-                            {{verb.type}}
-                        </li>
-                    </ul>
+
+                    <component is="{{verb.type}}" v-repeat="verb:verbs"></component>
                 </div>
             </div>
         </div>
@@ -53,7 +50,7 @@
             return {
                 addVerbModalInstance: undefined,
                 verbs               : [],
-                showModal: false
+                showModal           : false
             };
         }
         ,
@@ -63,7 +60,8 @@
             console.log('1', this.addVerb);
             //this.verbs = [];
 
-            console.log('verbs 1',this.verbs);
+            this.verbs.push({type: 'SAY', id: 1});
+            console.log('verbs 1', this.verbs);
 
         },
         methods   : {
@@ -74,37 +72,12 @@
             }
         },
         components: {
-            'title': {
-                props   : ['title'],
-                template: '<div v-if="!editMode">\n<span class="panel-title">{{title}}</span>\n    <a v-on="click: edit" style="cursor: pointer;">[e]</a>\n</div>\n<div v-if="editMode">\n    <input v-model="tmpTitle">\n    <a v-on="click: save">[s]</a>\n    <a v-on="click: cancel" style="cursor: pointer;">[c]</a>\n</div>\n',
-                data    : function () {
-                    return {
-                        editMode: false,
-                        tmpTitle: ''
-                    };
-                },
-                ready   : function () {
-
-                },
-                methods : {
-                    edit  : function () {
-                        console.log('edit');
-                        this.tmpTitle = this.title;
-                        this.editMode = true;
-                    },
-                    save  : function () {
-                        console.log('save');
-                        if (!_.isEmpty(this.tmpTitle)) {
-                            this.title = this.tmpTitle;
-                        }
-                        this.editMode = false;
-                    },
-                    cancel: function () {
-                        this.editMode = false;
-                    }
-                }
-            },
-            addVerbModal : require('./add-verb-modal.vue')
+            title       : require('./title.vue'),
+            addVerbModal: require('./add-verb-modal.vue'),
+            PLAY        : require('./verbs/play.vue'),
+            SAY         : require('./verbs/say.vue'),
+            DIAL        : require('./verbs/dial.vue'),
+            REDIRECT    : require('./verbs/redirect.vue')
         }
     };
 </script>

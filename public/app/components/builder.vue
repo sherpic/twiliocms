@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    var response = require('./response.vue');
+    var response = require('./response/response.vue');
 
     // application builder, one per application
     module.exports = {
