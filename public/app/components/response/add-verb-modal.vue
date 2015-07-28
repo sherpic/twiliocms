@@ -50,7 +50,10 @@
                     {text: 'Say', value: 'SAY'},
                     {text: 'Dial', value: 'DIAL'},
                     {text: 'Redirect', value: 'REDIRECT'},
-                    {text: 'Play', value: 'PLAY'}
+                    {text: 'Play', value: 'PLAY'},
+                    {text: 'Gather', value: 'GATHER'},
+                    {text: 'Sms', value: 'SMS'},
+                    {text: 'Record', value: 'RECORD'}
                 ],
                 selectedVerbType: undefined,
                 warningMessage  : undefined
@@ -87,7 +90,7 @@
         },
         computed: {
             isMaxVerbs: function () {
-                return this.verbs.length >= 2;
+                return this.verbs.length >= 5;
             }
         },
         ready   : function () {

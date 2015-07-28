@@ -1,5 +1,7 @@
 var Vue = require('vue');
 
+Vue.config.debug = true;
+
 var builder = new Vue(require('./components/builder.vue'));
 
 var app = new Vue({

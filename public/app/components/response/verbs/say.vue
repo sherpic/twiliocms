@@ -1,14 +1,32 @@
 <template>
     <div class="well">
-        <h3>Say</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Say</h3>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-danger pull-right"
+                        v-on="click: remove">
+                    <span class="glyphicon glyphicon-remove">
+                    </span>
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     module.exports = {
+        props     : [
+            {
+                name    : 'remove-verb',
+                type    : Function,
+                required: true
+            }
+        ],
         methods: {
             remove: function () {
-
+                this.removeVerb(this.$data);
             }
         }
     }

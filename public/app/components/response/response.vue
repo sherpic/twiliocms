@@ -13,12 +13,11 @@
                     </button>
                 </div>
             </div>
-            {{ verbs.length }} {{ verbs | json }}
             <div class="row" v-if="verbs.length">
                 <div class="col-md-12">
                     <h4>Verbs</h4>
 
-                    <component is="{{verb.type}}" v-repeat="verb:verbs"></component>
+                    <component is="{{type}}" v-repeat="verbs" remove-verb="{{removeVerb}}"></component>
                 </div>
             </div>
         </div>
@@ -35,8 +34,6 @@
     // response component, draws the
     module.exports = {
         props     : [
-            // you can use prop assertions to ensure the
-            // callback prop is indeed a function.
             {
                 name    : 'remove-response',
                 type    : Function,
@@ -55,20 +52,22 @@
         }
         ,
         ready     : function () {
-            console.log('verbs howhow');
-            console.log('v', this.verbs);
-            console.log('1', this.addVerb);
-            //this.verbs = [];
-
             this.verbs.push({type: 'SAY', id: 1});
             console.log('verbs 1', this.verbs);
 
         },
         methods   : {
+            remove: function() {
+                this.removeResponse(this.$data);
+            },
             showAddVerbModal: function () {
                 console.log(this.showModal);
                 this.showModal = true;
                 console.log(this.showModal);
+            },
+            removeVerb: function(verb) {
+                console.log(verb);
+                this.verbs.$remove(verb);
             }
         },
         components: {
@@ -77,7 +76,10 @@
             PLAY        : require('./verbs/play.vue'),
             SAY         : require('./verbs/say.vue'),
             DIAL        : require('./verbs/dial.vue'),
-            REDIRECT    : require('./verbs/redirect.vue')
+            REDIRECT    : require('./verbs/redirect.vue'),
+            GATHER    : require('./verbs/gather.vue'),
+            SMS    : require('./verbs/sms.vue'),
+            RECORD    : require('./verbs/record.vue')
         }
     };
 </script>
